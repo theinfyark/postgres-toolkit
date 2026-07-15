@@ -16,7 +16,8 @@
     "types",
     "README.md",
     "LICENSE",
-    "CHANGELOG.md"
+    "CHANGELOG.md",
+    "CONTRIBUTING.md"
   ],
   "scripts": {
     "test": "node --test tests/db.test.js",

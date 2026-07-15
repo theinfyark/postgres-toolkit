@@ -1,0 +1,45 @@
+{
+  "name": "postgres-toolkit",
+  "version": "1.0.0",
+  "description": "PostgreSQL helper with connection pool, retry, transactions, health checks, query logging, and connection stats.",
+  "type": "module",
+  "main": "./src/index.js",
+  "exports": {
+    ".": "./src/index.js"
+  },
+  "files": [
+    "src",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "node --test tests/db.test.js",
+    "prepublishOnly": "npm test"
+  },
+  "keywords": [
+    "postgres",
+    "postgresql",
+    "pg",
+    "pool",
+    "transaction",
+    "retry",
+    "database",
+    "sql"
+  ],
+  "author": "anilachary",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/theinfyark/postgres-toolkit.git"
+  },
+  "bugs": {
+    "url": "https://github.com/theinfyark/postgres-toolkit/issues"
+  },
+  "homepage": "https://github.com/theinfyark/postgres-toolkit#readme",
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "pg": "^8.16.0"
+  }
+}

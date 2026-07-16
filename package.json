@@ -1,6 +1,6 @@
 {
   "name": "postgres-toolkit",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "PostgreSQL helper with connection pool, retry, transactions, health checks, query logging, and connection stats.",
   "type": "module",
   "main": "./src/index.js",

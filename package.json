@@ -1,6 +1,6 @@
 {
   "name": "postgres-toolkit",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "PostgreSQL helper with connection pool, retry, transactions, health checks, query logging, and connection stats.",
   "type": "module",
   "main": "./src/index.js",
@@ -31,7 +31,15 @@
     "transaction",
     "retry",
     "database",
-    "sql"
+    "sql",
+    "node-postgres",
+    "connection-pool",
+    "health-check",
+    "postgres-client",
+    "database-tools",
+    "nodejs",
+    "typescript",
+    "pooling"
   ],
   "author": "anilachary",
   "license": "MIT",

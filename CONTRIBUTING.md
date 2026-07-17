@@ -18,7 +18,7 @@ npm run build --if-present
 - Prefer zero/minimal dependencies
 - Add tests for bug fixes and new features
 - Update `CHANGELOG.md` for user-facing changes
-- Use clear commit messages (do not add Cursor co-author trailers)
+- Use clear commit messages (do not add AI co-author trailers)
 - Open a PR with the checklist in the PR template completed
 
 ## Reporting issues

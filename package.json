@@ -1,18 +1,20 @@
 {
   "name": "postgres-toolkit",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "PostgreSQL helper with connection pool, retry, transactions, health checks, query logging, and connection stats.",
   "type": "module",
-  "main": "./src/index.js",
+  "main": "./dist/index.cjs",
   "exports": {
     ".": {
       "types": "./types/index.d.ts",
       "import": "./src/index.js",
+      "require": "./dist/index.cjs",
       "default": "./src/index.js"
     }
   },
   "files": [
     "src",
+    "dist",
     "types",
     "README.md",
     "LICENSE",
@@ -21,7 +23,8 @@
   ],
   "scripts": {
     "test": "node --test tests/db.test.js",
-    "prepublishOnly": "npm test"
+    "prepublishOnly": "npm test && npm run build",
+    "build": "tsup src/index.js --format cjs --clean --sourcemap"
   },
   "keywords": [
     "postgres",
@@ -62,5 +65,10 @@
   "funding": {
     "type": "github",
     "url": "https://github.com/sponsors/anilachary"
+  },
+  "module": "./src/index.js",
+  "devDependencies": {
+    "tsup": "^8.5.1",
+    "typescript": "^5.6.3"
   }
 }

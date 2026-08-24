@@ -193,4 +193,33 @@ describe("postgres-toolkit", () => {
     assert.equal(value, "ok");
     assert.equal(n, 3);
   });
+
+  it("throws without connectionString or pool config", () => {
+    const prev = process.env.DATABASE_URL;
+    delete process.env.DATABASE_URL;
+    try {
+      assert.throws(
+        () => new Postgres({}),
+        /connectionString|pool config|DATABASE_URL|clientPool/,
+      );
+    } finally {
+      if (prev !== undefined) process.env.DATABASE_URL = prev;
+    }
+  });
+
+  it("redacts query params in logs", async () => {
+    /** @type {object[]} */
+    const logs = [];
+    const db = new Postgres({
+      clientPool: mockPool({
+        queryImpl: async () => ({ rows: [{ id: 1 }], rowCount: 1 }),
+      }),
+      queryLogging: true,
+      logger: (e) => logs.push(e),
+      retry: false,
+    });
+    await db.query("select $1", ["super-secret"]);
+    assert.equal(logs[0].params, "[1 params]");
+    assert.equal(JSON.stringify(logs).includes("super-secret"), false);
+  });
 });

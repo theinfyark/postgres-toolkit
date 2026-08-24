@@ -53,6 +53,16 @@ export class Postgres {
       } else if (process.env.DATABASE_URL) {
         config.connectionString = process.env.DATABASE_URL;
       }
+      const hasConfig =
+        Boolean(config.connectionString) ||
+        Boolean(config.host) ||
+        Boolean(config.user) ||
+        Boolean(config.database);
+      if (!hasConfig) {
+        throw new Error(
+          "Postgres requires a connectionString, pool config (host/user/database), DATABASE_URL, or clientPool",
+        );
+      }
       this.pool = new Pool(config);
     }
   }
@@ -76,7 +86,7 @@ export class Postgres {
         if (this.queryLogging) {
           this.logger({
             sql: text,
-            params,
+            params: `[${params.length} params]`,
             rowCount: result.rowCount,
             ms,
             ok: true,
@@ -90,7 +100,7 @@ export class Postgres {
         if (this.queryLogging) {
           this.logger({
             sql: text,
-            params,
+            params: `[${params.length} params]`,
             ms,
             ok: false,
             error: /** @type {Error} */ (err)?.message,

@@ -69,7 +69,7 @@
   "module": "./src/index.js",
   "devDependencies": {
     "tsup": "^8.5.1",
-    "typescript": "^5.6.3"
+    "typescript": "^7.0.2"
   },
   "overrides": {
     "esbuild": ">=0.28.1",
